@@ -40,7 +40,9 @@ defmodule Mongodb.Mixfile do
       {:decimal, "~> 2.0"},
       {:jason, "~> 1.3", only: [:dev, :test]},
       {:credo, "~> 1.6.1", only: [:dev, :test], runtime: false},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:redbug, "~> 2.0", only: :dev, override: true, runtime: false},
+      {:rexbug, "~> 1.0", only: :dev, runtime: false},
     ]
   end
 
