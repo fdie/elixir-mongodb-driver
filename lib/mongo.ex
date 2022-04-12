@@ -1622,7 +1622,7 @@ defmodule Mongo do
   end
 
   defp to_iodata(doc) do
-    opts = Inspect.Opts.new([])
+    opts = %Inspect.Opts{}
 
     doc =
       doc
