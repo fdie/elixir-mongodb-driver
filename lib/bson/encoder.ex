@@ -112,18 +112,7 @@ defmodule BSON.Encoder do
 
         {key, value}, {_, acc} ->
           {key_type, key} = key(key)
-
-          {value, type} =
-            case Mongo.Encoder.impl_for(value) do
-              nil ->
-                {encode(value), type(value)}
-
-              _ ->
-                new_value = value |> Mongo.Encoder.encode()
-                {encode(new_value), type(new_value)}
-            end
-
-          {key_type, [acc, type, key, value]}
+          {key_type, [acc, type(value), key, encode(value)]}
       end)
 
     [<<IO.iodata_length(iodata) + 5::int32>>, iodata, 0x00]

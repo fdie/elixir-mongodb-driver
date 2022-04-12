@@ -1521,10 +1521,7 @@ defmodule Mongo do
   defp assert_single_doc!([{_, _} | _]), do: :ok
 
   defp assert_single_doc!(other) do
-    case Mongo.Encoder.impl_for(other) do
-      nil -> raise(ArgumentError, "expected single document, got: #{inspect(other)}")
-      _ -> :ok
-    end
+    raise(ArgumentError, "expected single document, got: #{inspect(other)}")
   end
 
   defp assert_many_docs!(docs) when is_list(docs),
